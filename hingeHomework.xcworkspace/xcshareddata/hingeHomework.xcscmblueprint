@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0232C8E05592CEFBF811998BEE567BDEB13C0AE7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0232C8E05592CEFBF811998BEE567BDEB13C0AE7" : 0,
+    "BC82D5DC20757B4799106BB6F335FEB91C2787E9" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A7CCC286-02D4-44C8-803B-7B695B5C9B15",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0232C8E05592CEFBF811998BEE567BDEB13C0AE7" : "hingeHomework\/",
+    "BC82D5DC20757B4799106BB6F335FEB91C2787E9" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "hingeHomework",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "hingeHomework.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/laurencaponong\/hingeHomework.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0232C8E05592CEFBF811998BEE567BDEB13C0AE7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/laurencaponong\/meetup-swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BC82D5DC20757B4799106BB6F335FEB91C2787E9"
+    }
+  ]
+}

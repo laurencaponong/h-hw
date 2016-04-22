@@ -9,7 +9,7 @@
 import UIKit
 
 class HomepageCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var nameLabel: UILabel!
+
+    @IBOutlet weak var imageView: UIImageView!
     
 }

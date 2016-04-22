@@ -26,21 +26,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFB-l7-dHN">
-                                            <rect key="frame" x="43" y="59" width="64" height="32"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                            <color key="textColor" red="0.7387235754" green="1" blue="0.84960086509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xW8-tV-eVP">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="YFB-l7-dHN" firstAttribute="centerX" secondItem="0mV-fN-ldL" secondAttribute="centerX" id="CXd-gX-PTb"/>
-                                    <constraint firstItem="YFB-l7-dHN" firstAttribute="centerY" secondItem="0mV-fN-ldL" secondAttribute="centerY" id="DRM-qu-sY6"/>
+                                    <constraint firstItem="xW8-tV-eVP" firstAttribute="top" secondItem="0mV-fN-ldL" secondAttribute="top" id="JBn-yW-OfG"/>
+                                    <constraint firstItem="xW8-tV-eVP" firstAttribute="leading" secondItem="0mV-fN-ldL" secondAttribute="leading" id="JDY-Nh-CQx"/>
+                                    <constraint firstAttribute="trailing" secondItem="xW8-tV-eVP" secondAttribute="trailing" id="ePU-L6-ekA"/>
+                                    <constraint firstAttribute="bottom" secondItem="xW8-tV-eVP" secondAttribute="bottom" id="vm1-4a-hmC"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="nameLabel" destination="YFB-l7-dHN" id="QCm-PG-WKq"/>
+                                    <outlet property="imageView" destination="xW8-tV-eVP" id="eoW-An-29i"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
