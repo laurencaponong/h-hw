@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1C4F3389094FA7A518329A79'
+               BlueprintIdentifier = '088A4499921C589D849774FD'
                BlueprintName = 'Pods-hingeHomework'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_hingeHomework.framework'>

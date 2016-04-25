@@ -85,9 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-hingeHomework/Alamofire.framework"
+  install_framework "Pods-hingeHomework/Kingfisher.framework"
   install_framework "Pods-hingeHomework/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-hingeHomework/Alamofire.framework"
+  install_framework "Pods-hingeHomework/Kingfisher.framework"
   install_framework "Pods-hingeHomework/SwiftyJSON.framework"
 fi

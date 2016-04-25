@@ -6,7 +6,28 @@
 //  Copyright © 2016 Caponong, Lauren. All rights reserved.
 //
 
+//Homepage View
+    //Displays thumbnails of all the images downloaded from the API endpoint above.
+    //A user can scroll through thumbnails of all the images.
+    //Images should be displayed in the order indicated by the server.
+    //Each image should be downloaded asynchronously and in a thread-safe manner.
+    //Clicking on a thumbnail should open a Gallery View
+
+//Additional Requirements
+    //Testing is very important. Show us you know how to test the important pieces of your code.
+    //The code should be clean and readable, and you should follow best practices for architecture, code formatting, variable/class names, etc.
+    //Please include a README with any steps needed to start, and test your app.
+    //Use comments where required.
+    //You can assume we have:
+        //XCode
+        //Git
+    //If there are any other required tools to run the project please specify or include a bundle.
+    //The app should cache data for offline use.
+    //The app should be attractive if initially started in offline mode.
+
+
 import UIKit
+import Kingfisher
 import Alamofire
 import SwiftyJSON
 
@@ -14,66 +35,55 @@ private let reuseIdentifier = "Cell"
 
 class HomepageCollectionViewController: UICollectionViewController {
     
-    var items = ["1", "2", "3", "4", "5", "6", "7", "8", "kitten", "puppy", "bird"]
     var imageURLarray = [String]()
-    var images = [String]()
-    var myImage = UIImage()
-    var dictionary = [String]()
-
+    var images:[UIImage] = []
+    var ImageCache = [String:UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getJSONData()
+        self.collectionView!.backgroundColor = UIColor.blackColor()
+    }
+       
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-//        self.collectionView!.registerClass(HomepageCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView!.backgroundColor = UIColor.grayColor()
-
-        // Do any additional setup after loading the view.
-
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.imageURLarray.count
     }
     
     
-    func getJSONData() {
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseJSON {
-            response in
-            
-            switch response.result {
-                
-                case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        
-                        for i in 1...json.count {
-                            let imageURL = json[i]["imageURL"].stringValue
-                            self.imageURLarray.append(imageURL)
-                        }
-                        
-                        print(self.imageURLarray)
-                        
-                    }
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HomepageCollectionViewCell
         
-                case .Failure(let error):
-                    print(error)
+        cell.backgroundColor = UIColor.grayColor()
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+
+            dispatch_sync(dispatch_get_main_queue()) {
+              
+                if (self.imageURLarray.isEmpty) {
+                    cell.imageView?.kf_setImageWithURL(NSURL(string: "http://placehold.it/100x100")!, placeholderImage: nil)
+                } else {
+                    cell.imageView?.kf_setImageWithURL(NSURL(string: self.imageURLarray[indexPath.row])!, placeholderImage: nil)
+                    
                 }
+            }
+            
         }
         
+        
+
+        
+        return cell
+
     }
     
-    func loadImages () {
-        
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-            
-            self.myImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:"https://www.google.com/logos/doodles/2016/earth-day-2016-5741289212477440.2-5643440998055936-ror.jpg")!)!)!
-        })
-        
-    }
-
-
+    
+    
     
 
     /*
@@ -88,26 +98,6 @@ class HomepageCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items.count
-    }
-    
-   
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HomepageCollectionViewCell
-//    
-//        cell.nameLabel?.text = self.items[indexPath.row]
-//        cell.imageView?.image = self.imageArray[indexPath.row]
-        
-        cell.backgroundColor = UIColor.blueColor()
-        return cell
-    }
 
     // MARK: UICollectionViewDelegate
 
@@ -139,5 +129,69 @@ class HomepageCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    
+    
+    //    func getJSONData() {
+    //
+    //        Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseJSON {
+    //            response in
+    //
+    //            switch response.result {
+    //
+    //                case .Success:
+    //                    if let value = response.result.value {
+    //                        let json = JSON(value)
+    //
+    //                        for i in 1...json.count {
+    //                            let imageURL = json[i]["imageURL"].stringValue
+    //                            self.imageURLarray.append(imageURL)
+    //                        }
+    //
+    //                        print(self.imageURLarray)
+    //
+    //                    }
+    //
+    //                case .Failure(let error):
+    //                    print(error)
+    //                }
+    //        }
+    //
+    //    }
+    //
+    //    func downloadImages () {
+    //
+    //        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+    //
+    //            self.myImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:"https://www.google.com/logos/doodles/2016/earth-day-2016-5741289212477440.2-5643440998055936-ror.jpg")!)!)!
+    //        })
+    //
+    //    }
+    //
+    //
+    
+    
+    
+    //    func downloadImages() {
+    //
+    //        Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseImage { response in debugPrint(response)
+    //
+    //            print(response.request)
+    //            print(response.response)
+    //            debugPrint(response.result)
+    //
+    //            if let image = response.result.value {
+    //                print("image downloaded: \(image)")
+    //            }
+    //
+    //        }
+    //    }
+    
+    
+
+
+
+    
+    
 
 }
