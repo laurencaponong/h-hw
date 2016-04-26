@@ -11,25 +11,38 @@ import Alamofire
 import SwiftyJSON
 
 class AFWrapper: NSObject {
-    
-    class func getJSONData() {
-        
+
+    class func getJSONData(closure: (arr: Array<Dictionary<String,String>>) -> Void) {
         Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseJSON {
             response in
             
-            switch response.result {
-                
-                case .Success:
-                    if let value = response.result.value as? Dictionary<String, AnyObject> {
-                        closure(dict:json)
-                }
-                    
-                case .Failure(let error):
-                    print(error)
-                }
+            if let json = response.result.value! as? AnyObject {
+                closure(arr: json as! Array<Dictionary<String, String>>)
+            }
+            
+//            print(response)
+            
         }
         
     }
-
     
 }
+
+
+
+
+//        Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseJSON {
+//            response in
+//
+//            switch response.result {
+//
+//                case .Success:
+//                    if let value = response.result.value as? Dictionary<String, AnyObject> {
+//                        closure(dict:json)
+//                }
+//
+//                case .Failure(let error):
+//                    print(error)
+//                }
+//        }
+        

@@ -26,7 +26,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xW8-tV-eVP">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1k-BV-jPf" userLabel="Image">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xW8-tV-eVP" userLabel="Placeholder">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         </imageView>
                                     </subviews>
@@ -40,6 +44,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="xW8-tV-eVP" id="eoW-An-29i"/>
+                                    <outlet property="placeholderImageView" destination="xW8-tV-eVP" id="pac-a3-7PP"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

@@ -35,24 +35,43 @@ private let reuseIdentifier = "Cell"
 
 class HomepageCollectionViewController: UICollectionViewController {
     
-    var imageURLarray = [String]()
-    var images:[UIImage] = []
-    var ImageCache = [String:UIImage]()
+    var objects = [Object]()
+    let cache = ImageCache(name: "cache")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getJSONData()
         self.collectionView!.backgroundColor = UIColor.blackColor()
+        
+        AFWrapper.getJSONData { (arr) in
+            self.objects = Object.objectsFromJSON(arr)
+            self.collectionView?.reloadData()
+        }
+        
+        prepareCache()
     }
-       
-
+    
+    func prepareCache() {
+        
+        // Set max disk cache to 50 mb. Default is no limit.
+        cache.maxDiskCacheSize = 10 * 1024 * 1024
+        
+        // Set max disk cache to duration to 3 days, Default is 1 week.
+        cache.maxCachePeriodInSecond = 60 * 60 * 24 * 3
+        
+        // Get the disk size taken by the cache.
+        cache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
+            print("disk size in bytes: \(size)")
+        }
+    }
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.imageURLarray.count
+        return objects.count
     }
+    
     
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -61,26 +80,72 @@ class HomepageCollectionViewController: UICollectionViewController {
         
         cell.backgroundColor = UIColor.grayColor()
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-
-            dispatch_sync(dispatch_get_main_queue()) {
-              
-                if (self.imageURLarray.isEmpty) {
-                    cell.imageView?.kf_setImageWithURL(NSURL(string: "http://placehold.it/100x100")!, placeholderImage: nil)
-                } else {
-                    cell.imageView?.kf_setImageWithURL(NSURL(string: self.imageURLarray[indexPath.row])!, placeholderImage: nil)
-                    
-                }
+        let object = self.objects[indexPath.row]
+        
+        object.getImageForObject { (image) in
+            if image != nil {
+                cell.imageView.kf_setImageWithURL(NSURL(string: object.imageURL)!,
+                    placeholderImage: nil,
+                    optionsInfo: [.TargetCache(self.cache)])
+            } else {
+                print ("image not loaded")
             }
-            
         }
-        
-        
-
-        
         return cell
 
     }
+    
+    
+    
+    
+    
+    
+    //        object.getImageForObject { (image) in
+    //            if image != nil {
+    //                cell.imageView?.image = image
+    //                UIView.animateWithDuration(0.3) {
+    //                    cell.imageView.alpha = 1
+    //                }
+    //            } else {
+    //                print("image is nil")
+    //            }
+    //        }
+    
+    
+    
+    //        object.getImageForObject { (image) in
+    //            if image != nil {
+    //                cell.imageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
+    //                    placeholderImage:  nil,
+    //                    optionsInfo: [.ForceRefresh])
+    //            } else {
+    //                print ("image not loaded")
+    //            }
+    //        }
+    
+    
+    //        // Image loading.
+    ////        cell.imageUrl = data.imageUrl // For recycled cells' late image loads.
+    //        if let image = data.imageURL.cachedImage {
+    //            // Cached: set immediately.
+    //            cell.imageView.image = image
+    //            cell.imageView.alpha = 1
+    //        } else {
+    //            // Not cached, so load then fade it in.
+    //            cell.placeholderImageView.alpha = 0
+    //            data.imageURL.fetchImage { image in
+    //                // Check the cell hasn't recycled while loading.
+    //                if cell.imageURL == data.imageURL {
+    //                    cell.imageView.image = image
+    //                    UIView.animateWithDuration(0.3) {
+    //                        cell.imageView.alpha = 1
+    //                    }
+    //                }
+    //            }
+    //        }
+    //
+    //        
+    
     
     
     

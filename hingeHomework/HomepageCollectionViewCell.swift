@@ -10,6 +10,12 @@ import UIKit
 
 class HomepageCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var placeholderImageView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
+    
+    override func prepareForReuse() {
+        self.imageView.image = nil
+        super.prepareForReuse()
+    }
     
 }

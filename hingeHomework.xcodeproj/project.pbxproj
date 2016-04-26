@@ -20,8 +20,6 @@
 		DBC195C91CCEA1E9005C68F6 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC195C81CCEA1E9005C68F6 /* Object.swift */; };
 		DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */; };
 		DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */; };
-		DBC61D221CCE690A00D0BAC2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC61D211CCE690A00D0BAC2 /* ImageLoader.swift */; };
-		DBD29D551CCE78B9006404C6 /* UIImageView+AFNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD29D541CCE78B9006404C6 /* UIImageView+AFNetworking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +63,6 @@
 		DBC195C81CCEA1E9005C68F6 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
 		DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		DBC61D211CCE690A00D0BAC2 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		DBD29D541CCE78B9006404C6 /* UIImageView+AFNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+AFNetworking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,11 +142,9 @@
 				DB3FB5E01CCAA29100884319 /* Assets.xcassets */,
 				DB3FB5E21CCAA29100884319 /* LaunchScreen.storyboard */,
 				DB3FB5E51CCAA29100884319 /* Info.plist */,
-				DBC61D211CCE690A00D0BAC2 /* ImageLoader.swift */,
+				DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */,
 				DBC195C71CCEA171005C68F6 /* Model */,
 				DB3FB60B1CCAAE5600884319 /* Views */,
-				DBD29D541CCE78B9006404C6 /* UIImageView+AFNetworking.swift */,
-				DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */,
 			);
 			path = hingeHomework;
 			sourceTree = "<group>";
@@ -376,11 +370,9 @@
 				DB3FB60A1CCAA43600884319 /* HomepageCollectionViewCell.swift in Sources */,
 				DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */,
 				DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */,
-				DBC61D221CCE690A00D0BAC2 /* ImageLoader.swift in Sources */,
 				DBC195C91CCEA1E9005C68F6 /* Object.swift in Sources */,
 				DB3FB5DA1CCAA29100884319 /* AppDelegate.swift in Sources */,
 				DB3FB6081CCAA31300884319 /* HomepageCollectionViewController.swift in Sources */,
-				DBD29D551CCE78B9006404C6 /* UIImageView+AFNetworking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
