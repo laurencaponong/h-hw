@@ -20,11 +20,6 @@ class Object {
         self.name = name
         self.description = description
         self.imageURL = imageURL
-        
-        if name.isEmpty || description!.isEmpty || imageURL.isEmpty {
-            print ("one value is empty")
-        }
-        
     }
     
     //grab objects from JSON
@@ -34,33 +29,21 @@ class Object {
         var objects = [Object]()
         
         //result = the json array
-        if let result = json as? Array {
-    
             if let objectsFromResults = json as? AnyObject {
-                
                 for i in 0..<objectsFromResults.count {
                     if let dict = objectsFromResults[i] as? Dictionary<String, AnyObject> {
                         let imageName = dict["imageName"] as! String
                         let imageURL = dict["imageURL"] as! String
                         let imageDescription = dict["imageDescription"] as! String
                         objects.append(Object.init(name: imageName, description:imageDescription, imageURL: imageURL)!)
-                        print("\(imageName) \n, \(imageDescription) \n, \(imageURL) \n \n")
+//                        print("\(imageName) \n, \(imageDescription) \n, \(imageURL) \n \n")
                     }
                 }
             }
-        }
-        
-//        for i in 0..<objects.count {
-//            print("\(objects[i]) \n")
-//        }
         
         return objects
     }
 
-
-
-    
-    
     //asynchronously download image
     func getImageForObject(completion: (image: UIImage?) -> Void) {
         
@@ -71,8 +54,7 @@ class Object {
             
             if data != nil {
                 let objectImage = UIImage(data: data!)
-                print("\n loaded image: \(URL)")
-                
+//                print("\n loaded image: \(URL)")
                 dispatch_sync(dispatch_get_main_queue(), { () -> Void in
                     completion(image: objectImage)
                 })
@@ -81,8 +63,6 @@ class Object {
             if data == nil {
                 print("image not loaded \n")
             }
-            
-            
         }
     }
 }

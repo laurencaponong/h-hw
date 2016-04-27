@@ -33,10 +33,10 @@ import SwiftyJSON
 
 private let reuseIdentifier = "Cell"
 
-class HomepageCollectionViewController: UICollectionViewController {
+class HomepageCollectionViewController: UICollectionViewController, deleteImageProtocol {
     
     var objects = [Object]()
-    let cache = ImageCache(name: "cache")
+    var imageCache = ImageCache(name: "imageCache")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,24 +46,20 @@ class HomepageCollectionViewController: UICollectionViewController {
             self.objects = Object.objectsFromJSON(arr)
             self.collectionView?.reloadData()
         }
-        
-        prepareCache()
+    }
+
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
-    func prepareCache() {
-        
-        // Set max disk cache to 50 mb. Default is no limit.
-        cache.maxDiskCacheSize = 10 * 1024 * 1024
-        
-        // Set max disk cache to duration to 3 days, Default is 1 week.
-        cache.maxCachePeriodInSecond = 60 * 60 * 24 * 3
-        
-        // Get the disk size taken by the cache.
-        cache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
-            print("disk size in bytes: \(size)")
-        }
+    func deleteImageAtIndex(imageIndex: Int) {
+        self.objects.removeAtIndex(imageIndex)
+        self.collectionView?.reloadData()
     }
     
+    
+    // MARK: - Table view methods
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -72,29 +68,73 @@ class HomepageCollectionViewController: UICollectionViewController {
         return objects.count
     }
     
-    
-    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HomepageCollectionViewCell
         
-        cell.backgroundColor = UIColor.grayColor()
+        cell.backgroundColor = UIColor.blackColor()
         
         let object = self.objects[indexPath.row]
         
-        object.getImageForObject { (image) in
-            if image != nil {
-                cell.imageView.kf_setImageWithURL(NSURL(string: object.imageURL)!,
-                    placeholderImage: nil,
-                    optionsInfo: [.TargetCache(self.cache)])
-            } else {
-                print ("image not loaded")
-            }
+        cell.imageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
+                                           placeholderImage: nil,
+                                           optionsInfo: [.TargetCache(imageCache)])
+        
+        imageCache.downloader.downloadImageWithURL(NSURL(string: object.imageURL)!, progressBlock: { (receivedSize, totalSize) in
+//             print("Download Progress: \(receivedSize)/\(totalSize)")
+            }) { (image, error, imageURL, originalData) in
+                print("Downloaded and set!")
+                
+                if image != nil {
+                    self.downloadedImages.append((image)!)
+                } else {
+                   print ("image not downloadeD")
+                }
+                
         }
+        
         return cell
-
     }
     
+    
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "showGalleryView" {
+            
+            if let indexPath = self.collectionView?.indexPathForCell(sender as! UICollectionViewCell) {
+                
+                    let galleryDetailVC = segue.destinationViewController as! GalleryViewController
+                    
+                    galleryDetailVC.delegate = self
+                    galleryDetailVC.imageIndex = indexPath.row
+                    galleryDetailVC.currentArraySize = objects.count
+                    galleryDetailVC.objectsArray = objects
+                    galleryDetailVC.downloadedImagesArray = self.downloadedImages
+                
+                    let object = self.objects[indexPath.row]
+                    let imageURL = object.imageURL
+//                
+//                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: imageURL)!,
+//                                                   placeholderImage: nil,
+//                                                   optionsInfo: [.TargetCache(myCache)])
+                
+                
+
+                    object.getImageForObject { (image) in
+                        if image != nil {
+                            galleryDetailVC.galleryImageView?.image = image
+                        } else {
+    //                        print ("image not loaded")
+                        }
+                }
+                
+            }
+        }
+        
+    }
     
     
     
@@ -151,27 +191,14 @@ class HomepageCollectionViewController: UICollectionViewController {
     
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-
-    // MARK: UICollectionViewDelegate
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-    */
+ 
 
     /*
     // Uncomment this method to specify if the specified item should be selected
@@ -193,6 +220,8 @@ class HomepageCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
     }
+    */
+ 
     */
     
     
@@ -251,12 +280,13 @@ class HomepageCollectionViewController: UICollectionViewController {
     //
     //        }
     //    }
-    
-    
-
-
 
     
     
 
-}
+
+
+    
+    }
+
+
