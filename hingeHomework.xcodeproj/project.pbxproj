@@ -21,7 +21,6 @@
 		DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */; };
 		DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */; };
 		DBF40F5B1CD141C300E6A6EE /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */; };
-		DBF40F5D1CD1512C00E6A6EE /* imageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF40F5C1CD1512C00E6A6EE /* imageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,6 @@
 		DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
 		DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
-		DBF40F5C1CD1512C00E6A6EE /* imageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +147,6 @@
 				DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */,
 				DBC195C71CCEA171005C68F6 /* Model */,
 				DB3FB60B1CCAAE5600884319 /* Views */,
-				DBF40F5C1CD1512C00E6A6EE /* imageCache.swift */,
 			);
 			path = hingeHomework;
 			sourceTree = "<group>";
@@ -176,8 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				DB3FB6071CCAA31300884319 /* HomepageCollectionViewController.swift */,
-				DB3FB6091CCAA43600884319 /* HomepageCollectionViewCell.swift */,
 				DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */,
+				DB3FB6091CCAA43600884319 /* HomepageCollectionViewCell.swift */,
 				DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */,
 			);
 			name = Views;
@@ -375,7 +372,6 @@
 			files = (
 				DB3FB60A1CCAA43600884319 /* HomepageCollectionViewCell.swift in Sources */,
 				DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */,
-				DBF40F5D1CD1512C00E6A6EE /* imageCache.swift in Sources */,
 				DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */,
 				DBF40F5B1CD141C300E6A6EE /* CustomImageView.swift in Sources */,
 				DBC195C91CCEA1E9005C68F6 /* Object.swift in Sources */,

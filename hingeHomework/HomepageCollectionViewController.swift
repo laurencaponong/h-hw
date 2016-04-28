@@ -27,6 +27,7 @@
 
 
 import UIKit
+import Foundation
 import Kingfisher
 import Alamofire
 import SwiftyJSON
@@ -36,7 +37,10 @@ private let reuseIdentifier = "Cell"
 class HomepageCollectionViewController: UICollectionViewController, deleteImageProtocol {
     
     var objects = [Object]()
-    var imageCache = ImageCache(name: "imageCache")
+    var imageArray = [UIImage]()
+    var myCache = ImageCache(name: "myCache")
+    let downloader = KingfisherManager.sharedManager.downloader
+    let downloadedImages = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +52,7 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
         }
     }
 
-    
+    // MARK: - User interface styles
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
@@ -76,22 +80,18 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
         
         let object = self.objects[indexPath.row]
         
+        //Set image of cell
         cell.imageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
                                            placeholderImage: nil,
-                                           optionsInfo: [.TargetCache(imageCache)])
+                                           optionsInfo: [.TargetCache(myCache)])
         
-        imageCache.downloader.downloadImageWithURL(NSURL(string: object.imageURL)!, progressBlock: { (receivedSize, totalSize) in
-//             print("Download Progress: \(receivedSize)/\(totalSize)")
+        downloader.downloadImageWithURL(NSURL(string: object.imageURL)!, progressBlock: { (receivedSize, totalSize) in
             }) { (image, error, imageURL, originalData) in
-                print("Downloaded and set!")
                 
                 if image != nil {
-                    self.downloadedImages.append((image)!)
-                } else {
-                   print ("image not downloadeD")
+                    self.imageArray.append(image!)
                 }
-                
-        }
+            }
         
         return cell
     }
@@ -99,7 +99,6 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
     
     
     // MARK: - Navigation
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showGalleryView" {
@@ -107,186 +106,25 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
             if let indexPath = self.collectionView?.indexPathForCell(sender as! UICollectionViewCell) {
                 
                     let galleryDetailVC = segue.destinationViewController as! GalleryViewController
-                    
+                
                     galleryDetailVC.delegate = self
+                
+                    //passing data over
                     galleryDetailVC.imageIndex = indexPath.row
-                    galleryDetailVC.currentArraySize = objects.count
                     galleryDetailVC.objectsArray = objects
-                    galleryDetailVC.downloadedImagesArray = self.downloadedImages
+                    galleryDetailVC.currentObject = objects[indexPath.row]
+                    galleryDetailVC.downloadedImages = imageArray
                 
                     let object = self.objects[indexPath.row]
-                    let imageURL = object.imageURL
-//                
-//                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: imageURL)!,
-//                                                   placeholderImage: nil,
-//                                                   optionsInfo: [.TargetCache(myCache)])
                 
-                
-
-                    object.getImageForObject { (image) in
-                        if image != nil {
-                            galleryDetailVC.galleryImageView?.image = image
-                        } else {
-    //                        print ("image not loaded")
-                        }
-                }
-                
+                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
+                                                                    placeholderImage: nil,
+                                                                    optionsInfo: [.TargetCache(myCache)])
+            
+            
             }
         }
-        
     }
-    
-    
-    
-    
-    
-    //        object.getImageForObject { (image) in
-    //            if image != nil {
-    //                cell.imageView?.image = image
-    //                UIView.animateWithDuration(0.3) {
-    //                    cell.imageView.alpha = 1
-    //                }
-    //            } else {
-    //                print("image is nil")
-    //            }
-    //        }
-    
-    
-    
-    //        object.getImageForObject { (image) in
-    //            if image != nil {
-    //                cell.imageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
-    //                    placeholderImage:  nil,
-    //                    optionsInfo: [.ForceRefresh])
-    //            } else {
-    //                print ("image not loaded")
-    //            }
-    //        }
-    
-    
-    //        // Image loading.
-    ////        cell.imageUrl = data.imageUrl // For recycled cells' late image loads.
-    //        if let image = data.imageURL.cachedImage {
-    //            // Cached: set immediately.
-    //            cell.imageView.image = image
-    //            cell.imageView.alpha = 1
-    //        } else {
-    //            // Not cached, so load then fade it in.
-    //            cell.placeholderImageView.alpha = 0
-    //            data.imageURL.fetchImage { image in
-    //                // Check the cell hasn't recycled while loading.
-    //                if cell.imageURL == data.imageURL {
-    //                    cell.imageView.image = image
-    //                    UIView.animateWithDuration(0.3) {
-    //                        cell.imageView.alpha = 1
-    //                    }
-    //                }
-    //            }
-    //        }
-    //
-    //        
-    
-    
-    
-    
-    
-
-
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
- 
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
-    }
-    */
- 
-    */
-    
-    
-    
-    //    func getJSONData() {
-    //
-    //        Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseJSON {
-    //            response in
-    //
-    //            switch response.result {
-    //
-    //                case .Success:
-    //                    if let value = response.result.value {
-    //                        let json = JSON(value)
-    //
-    //                        for i in 1...json.count {
-    //                            let imageURL = json[i]["imageURL"].stringValue
-    //                            self.imageURLarray.append(imageURL)
-    //                        }
-    //
-    //                        print(self.imageURLarray)
-    //
-    //                    }
-    //
-    //                case .Failure(let error):
-    //                    print(error)
-    //                }
-    //        }
-    //
-    //    }
-    //
-    //    func downloadImages () {
-    //
-    //        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-    //
-    //            self.myImage =  UIImage(data: NSData(contentsOfURL: NSURL(string:"https://www.google.com/logos/doodles/2016/earth-day-2016-5741289212477440.2-5643440998055936-ror.jpg")!)!)!
-    //        })
-    //
-    //    }
-    //
-    //
-    
-    
-    
-    //    func downloadImages() {
-    //
-    //        Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseImage { response in debugPrint(response)
-    //
-    //            print(response.request)
-    //            print(response.response)
-    //            debugPrint(response.result)
-    //
-    //            if let image = response.result.value {
-    //                print("image downloaded: \(image)")
-    //            }
-    //
-    //        }
-    //    }
-
-    
-    
-
-
-
-    
     }
 
 

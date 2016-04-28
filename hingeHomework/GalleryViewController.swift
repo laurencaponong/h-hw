@@ -26,21 +26,25 @@ protocol deleteImageProtocol {
 
 class GalleryViewController: UIViewController {
     
-    var object = Object(name: "", description: "", imageURL: "")
+    var currentObject = Object(name: "", description: "", imageURL: "")
+    var downloadedImages = [UIImage]()
     var imageIndex: Int = 0
-    var downloadedImagesArray = [UIImage]()
-    var currentArraySize: Int = 0
     var objectsArray = [Object]()
-    let animationDuration: NSTimeInterval = 0.25
-    let switchingInterval: NSTimeInterval = 3
     var delegate: deleteImageProtocol?
     @IBOutlet weak var navbarTitle: UINavigationItem!
     @IBOutlet weak var galleryImageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navbarTitle.title = "\((imageIndex + 1)) / \((currentArraySize + 1))"
-        setAndAnimateImages()
+        self.navbarTitle.title = "\((imageIndex + 1)) / \((objectsArray.count + 1))"
+//        animateImages()
+    }
+    
+    func animateImages() {
+        galleryImageView.animationImages = downloadedImages
+        galleryImageView.animationDuration = 10.0
+        galleryImageView.startAnimating()
     }
     
     //MARK: - Button tap methods
@@ -52,52 +56,6 @@ class GalleryViewController: UIViewController {
         delegate?.deleteImageAtIndex(imageIndex)
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    func setAndAnimateImages() {
-        
-        for eachObject in objectsArray {
-            let imageURL = NSURL(string: eachObject.imageURL)
-            print(imageURL)
-            galleryImageView.kf_setImageWithURL(imageURL!)
-            galleryImageView.animationDuration = 3.0
-            galleryImageView.startAnimating()
-        }
-        
-//        for object in 0..<objectsArray.count {
-//            let imageURL = NSURL(string: objectsArray[object].imageURL)
-//            galleryImageView.kf_setImageWithURL(imageURL!)
-//            galleryImageView.animationDuration = 3.0
-//            galleryImageView.startAnimating()
-//        }
-        
-//        for object in 0..<objectsArray.count {
-//            let URLstring = objectsArray[object].imageURL
-//            galleryImageView.kf_setImageWithURL(NSURL(string: URLstring)!,
-//                                                placeholderImage: nil,
-//                                                optionsInfo: [.Transition(ImageTransition.Fade(1))])
-//        }
-//        
-        
-//        //add images to the array
-//        var imagesListArray :NSMutableArray = []
-//        
-//        //use for loop
-//        for position in 1...5
-//        {
-//            var strImageName : String = "c\(position).png"
-//            var image  = UIImage(named:strImageName)
-//            imagesListArray.addObject(image!)
-//        }
-//        
-//        self.galleryImageView.animationImages = imagesListArray;
-//        self.galleryImageView.animationDuration = 1.0
-//        self.galleryImageView.startAnimating()
-//        
-        
-    }
-    
-    
-    
     
     // MARK: - Navigation
 
