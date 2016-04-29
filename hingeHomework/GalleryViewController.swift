@@ -27,8 +27,8 @@ protocol deleteImageProtocol {
 class GalleryViewController: UIViewController {
     
     var currentObject = Object(name: "", description: "", imageURL: "")
+    var currentImageIndex: Int = 0
     var downloadedImages = [UIImage]()
-    var imageIndex: Int = 0
     var objectsArray = [Object]()
     var delegate: deleteImageProtocol?
     @IBOutlet weak var navbarTitle: UINavigationItem!
@@ -37,24 +37,47 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navbarTitle.title = "\((imageIndex + 1)) / \((objectsArray.count + 1))"
-//        animateImages()
+        self.navbarTitle.title = "\((currentImageIndex + 1)) / \((objectsArray.count + 1))"
+//        delay(2.0) { self.animateImages() }
+//        startAnimating(currentImageIndex)
+        print("current image index: \(currentImageIndex)")
+        let URL = NSURL(string: (objectsArray[currentImageIndex].imageURL))
+        galleryImageView.kf_setImageWithURL(URL!)
+        animateImages()
+    
+    }
+
+    func changeNavbarTitleNumbers() {
+        self.navbarTitle.title = "\((currentImageIndex + 1)) / \((objectsArray.count + 1))"
     }
     
     func animateImages() {
-        galleryImageView.animationImages = downloadedImages
-        galleryImageView.animationDuration = 10.0
-        galleryImageView.startAnimating()
+//        
+//        galleryImageView.stopAnimating()
+//        
+//        var playImagesArray = [UIImage]()
+//        for var index = currentImageIndex + 1; index < downloadedImages.count; index++ {
+//            playImagesArray.append(downloadedImages[index])
+//            print("appended \(downloadedImages[index])")
+//            print("total image count \(downloadedImages.count) \n \n")
+//        }
+//        
+//        galleryImageView.animationImages = downloadedImages
+//        galleryImageView.animationDuration = 6.0
+//        galleryImageView.startAnimating()
+        
     }
     
     //MARK: - Button tap methods
     @IBAction func backButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+        galleryImageView.stopAnimating()
     }
     
     @IBAction func deleteButtonTapped(sender: AnyObject) {
-        delegate?.deleteImageAtIndex(imageIndex)
+        delegate?.deleteImageAtIndex(currentImageIndex)
         dismissViewControllerAnimated(true, completion: nil)
+        galleryImageView.stopAnimating()
     }
     
     // MARK: - Navigation

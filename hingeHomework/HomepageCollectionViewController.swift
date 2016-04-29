@@ -75,9 +75,7 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HomepageCollectionViewCell
-        
         cell.backgroundColor = UIColor.blackColor()
-        
         let object = self.objects[indexPath.row]
         
         //Set image of cell
@@ -85,9 +83,7 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
                                            placeholderImage: nil,
                                            optionsInfo: [.TargetCache(myCache)])
         
-        downloader.downloadImageWithURL(NSURL(string: object.imageURL)!, progressBlock: { (receivedSize, totalSize) in
-            }) { (image, error, imageURL, originalData) in
-                
+        downloader.downloadImageWithURL(NSURL(string: object.imageURL)!, progressBlock: { (receivedSize, totalSize) in }) { (image, error, imageURL, originalData) in
                 if image != nil {
                     self.imageArray.append(image!)
                 }
@@ -106,21 +102,17 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
             if let indexPath = self.collectionView?.indexPathForCell(sender as! UICollectionViewCell) {
                 
                     let galleryDetailVC = segue.destinationViewController as! GalleryViewController
-                
                     galleryDetailVC.delegate = self
                 
                     //passing data over
-                    galleryDetailVC.imageIndex = indexPath.row
+                    galleryDetailVC.currentImageIndex = indexPath.row
                     galleryDetailVC.objectsArray = objects
                     galleryDetailVC.currentObject = objects[indexPath.row]
                     galleryDetailVC.downloadedImages = imageArray
                 
                     let object = self.objects[indexPath.row]
                 
-                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
-                                                                    placeholderImage: nil,
-                                                                    optionsInfo: [.TargetCache(myCache)])
-            
+                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!)
             
             }
         }
