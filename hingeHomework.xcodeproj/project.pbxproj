@@ -17,10 +17,10 @@
 		DB3FB5FA1CCAA29100884319 /* hingeHomeworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB5F91CCAA29100884319 /* hingeHomeworkUITests.swift */; };
 		DB3FB6081CCAA31300884319 /* HomepageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB6071CCAA31300884319 /* HomepageCollectionViewController.swift */; };
 		DB3FB60A1CCAA43600884319 /* HomepageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB6091CCAA43600884319 /* HomepageCollectionViewCell.swift */; };
-		DBC195C91CCEA1E9005C68F6 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC195C81CCEA1E9005C68F6 /* Object.swift */; };
 		DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */; };
 		DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */; };
 		DBF40F5B1CD141C300E6A6EE /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */; };
+		DBF40F611CD3D94600E6A6EE /* hingeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF40F601CD3D94600E6A6EE /* hingeImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +61,10 @@
 		DB3FB5FB1CCAA29100884319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3FB6071CCAA31300884319 /* HomepageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageCollectionViewController.swift; sourceTree = "<group>"; };
 		DB3FB6091CCAA43600884319 /* HomepageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageCollectionViewCell.swift; sourceTree = "<group>"; };
-		DBC195C81CCEA1E9005C68F6 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
 		DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		DBF40F601CD3D94600E6A6EE /* hingeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hingeImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +183,7 @@
 		DBC195C71CCEA171005C68F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DBC195C81CCEA1E9005C68F6 /* Object.swift */,
+				DBF40F601CD3D94600E6A6EE /* hingeImage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,10 +371,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB3FB60A1CCAA43600884319 /* HomepageCollectionViewCell.swift in Sources */,
+				DBF40F611CD3D94600E6A6EE /* hingeImage.swift in Sources */,
 				DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */,
 				DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */,
 				DBF40F5B1CD141C300E6A6EE /* CustomImageView.swift in Sources */,
-				DBC195C91CCEA1E9005C68F6 /* Object.swift in Sources */,
 				DB3FB5DA1CCAA29100884319 /* AppDelegate.swift in Sources */,
 				DB3FB6081CCAA31300884319 /* HomepageCollectionViewController.swift in Sources */,
 			);

@@ -26,8 +26,6 @@
     //The app should be attractive if initially started in offline mode.
 
 
-import UIKit
-import Foundation
 import Kingfisher
 import Alamofire
 import SwiftyJSON
@@ -36,7 +34,7 @@ private let reuseIdentifier = "Cell"
 
 class HomepageCollectionViewController: UICollectionViewController, deleteImageProtocol {
     
-    var objects = [Object]()
+    var hingeImages = [hingeImage]()
     var imageArray = [UIImage]()
     var myCache = ImageCache(name: "myCache")
     let downloader = KingfisherManager.sharedManager.downloader
@@ -47,7 +45,7 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
         self.collectionView!.backgroundColor = UIColor.blackColor()
         
         AFWrapper.getJSONData { (arr) in
-            self.objects = Object.objectsFromJSON(arr)
+            self.hingeImages = hingeImage.objectsFromJSON(arr)
             self.collectionView?.reloadData()
         }
     }
@@ -58,7 +56,7 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
     }
     
     func deleteImageAtIndex(imageIndex: Int) {
-        self.objects.removeAtIndex(imageIndex)
+        self.hingeImages.removeAtIndex(imageIndex)
         self.collectionView?.reloadData()
     }
     
@@ -69,14 +67,14 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return objects.count
+        return hingeImages.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HomepageCollectionViewCell
         cell.backgroundColor = UIColor.blackColor()
-        let object = self.objects[indexPath.row]
+        let object = self.hingeImages[indexPath.row]
         
         //Set image of cell
         cell.imageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
@@ -106,11 +104,11 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
                 
                     //passing data over
                     galleryDetailVC.currentImageIndex = indexPath.row
-                    galleryDetailVC.objectsArray = objects
-                    galleryDetailVC.currentObject = objects[indexPath.row]
+                    galleryDetailVC.objectsArray = hingeImages
+                    galleryDetailVC.currentObject = hingeImages[indexPath.row]
                     galleryDetailVC.downloadedImages = imageArray
                 
-                    let object = self.objects[indexPath.row]
+                    let object = self.hingeImages[indexPath.row]
                 
                     galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!)
             

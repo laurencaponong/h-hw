@@ -26,10 +26,10 @@ protocol deleteImageProtocol {
 
 class GalleryViewController: UIViewController {
     
-    var currentObject = Object(name: "", description: "", imageURL: "")
+    var currentObject = hingeImage(name: "", description: "", imageURL: "")
     var currentImageIndex: Int = 0
     var downloadedImages = [UIImage]()
-    var objectsArray = [Object]()
+    var objectsArray = [hingeImage]()
     var delegate: deleteImageProtocol?
     @IBOutlet weak var navbarTitle: UINavigationItem!
     @IBOutlet weak var galleryImageView: UIImageView!
@@ -38,8 +38,6 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navbarTitle.title = "\((currentImageIndex + 1)) / \((objectsArray.count + 1))"
-//        delay(2.0) { self.animateImages() }
-//        startAnimating(currentImageIndex)
         print("current image index: \(currentImageIndex)")
         let URL = NSURL(string: (objectsArray[currentImageIndex].imageURL))
         galleryImageView.kf_setImageWithURL(URL!)
