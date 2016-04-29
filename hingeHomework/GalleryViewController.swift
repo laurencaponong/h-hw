@@ -26,8 +26,9 @@ protocol deleteImageProtocol {
 
 class GalleryViewController: UIViewController {
     
-    var currentObject = hingeImage(name: "", description: "", imageURL: "")
-    var currentImageIndex: Int = 0
+    var selectedObject = hingeImage(name: "", description: "", imageURL: "")
+    var animationStarted = Bool()
+    var selectedImageIndex: Int = 0
     var downloadedImages = [UIImage]()
     var objectsArray = [hingeImage]()
     var delegate: deleteImageProtocol?
@@ -37,34 +38,39 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navbarTitle.title = "\((currentImageIndex + 1)) / \((objectsArray.count + 1))"
-        print("current image index: \(currentImageIndex)")
-        let URL = NSURL(string: (objectsArray[currentImageIndex].imageURL))
-        galleryImageView.kf_setImageWithURL(URL!)
-        animateImages()
-    
+        setupNavbar()
+        setInitialImage()
+        animationStarted = true
     }
+    
 
-    func changeNavbarTitleNumbers() {
-        self.navbarTitle.title = "\((currentImageIndex + 1)) / \((objectsArray.count + 1))"
+    func setInitialImage() {
+        let URL = NSURL(string: (objectsArray[selectedImageIndex].imageURL))
+        galleryImageView.kf_setImageWithURL(URL!)
+        addImagesToArray()
     }
     
-    func animateImages() {
-//        
-//        galleryImageView.stopAnimating()
-//        
-//        var playImagesArray = [UIImage]()
-//        for var index = currentImageIndex + 1; index < downloadedImages.count; index++ {
-//            playImagesArray.append(downloadedImages[index])
-//            print("appended \(downloadedImages[index])")
-//            print("total image count \(downloadedImages.count) \n \n")
-//        }
-//        
-//        galleryImageView.animationImages = downloadedImages
-//        galleryImageView.animationDuration = 6.0
-//        galleryImageView.startAnimating()
+    
+    func addImagesToArray() {
+        var playImagesArray = [UIImage]()
         
+        for (index, image) in downloadedImages.enumerate() {
+            playImagesArray.append(downloadedImages[index])
+            print(downloadedImages[index])
+        }
+        
+        animateImages()
     }
+    
+    
+    //MARK: - Animation method
+    func animateImages() {
+        galleryImageView.stopAnimating()
+        galleryImageView.animationImages = downloadedImages
+        galleryImageView.animationDuration = 10.0
+        galleryImageView.startAnimating()
+    }
+    
     
     //MARK: - Button tap methods
     @IBAction func backButtonTapped(sender: AnyObject) {
@@ -73,19 +79,21 @@ class GalleryViewController: UIViewController {
     }
     
     @IBAction func deleteButtonTapped(sender: AnyObject) {
-        delegate?.deleteImageAtIndex(currentImageIndex)
+        delegate?.deleteImageAtIndex(selectedImageIndex)
         dismissViewControllerAnimated(true, completion: nil)
         galleryImageView.stopAnimating()
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        
+    
+    
+    //MARK: - User interface methods
+    func changeNavbarTitleNumbers(indexOfCurrentImage: Int) {
+        self.navbarTitle.title = "\((selectedImageIndex + 1)) / \((objectsArray.count + 1))"
     }
+    
+    func setupNavbar() {
+        self.navbarTitle.title = "\((selectedImageIndex + 1)) / \((objectsArray.count + 1))"
+    }
+
 
 }

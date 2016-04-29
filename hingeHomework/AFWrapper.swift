@@ -20,29 +20,8 @@ class AFWrapper: NSObject {
                 closure(arr: json as! Array<Dictionary<String, String>>)
             }
             
-//            print(response)
-            
         }
         
     }
     
 }
-
-
-
-
-//        Alamofire.request(.GET, "https://hinge-homework.s3.amazonaws.com/client/services/homework.json") .responseJSON {
-//            response in
-//
-//            switch response.result {
-//
-//                case .Success:
-//                    if let value = response.result.value as? Dictionary<String, AnyObject> {
-//                        closure(dict:json)
-//                }
-//
-//                case .Failure(let error):
-//                    print(error)
-//                }
-//        }
-        

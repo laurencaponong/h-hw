@@ -38,23 +38,25 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
     var imageArray = [UIImage]()
     var myCache = ImageCache(name: "myCache")
     let downloader = KingfisherManager.sharedManager.downloader
-    let downloadedImages = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView!.backgroundColor = UIColor.blackColor()
+        pullFromJSON()
+    }
+    
+    
+    // MARK: - Networking 
+    func pullFromJSON() {
         
         AFWrapper.getJSONData { (arr) in
             self.hingeImages = hingeImage.objectsFromJSON(arr)
             self.collectionView?.reloadData()
         }
     }
-
-    // MARK: - User interface styles
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
+    // MARK: - Delete image method
     func deleteImageAtIndex(imageIndex: Int) {
         self.hingeImages.removeAtIndex(imageIndex)
         self.collectionView?.reloadData()
@@ -74,22 +76,20 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! HomepageCollectionViewCell
         cell.backgroundColor = UIColor.blackColor()
-        let object = self.hingeImages[indexPath.row]
+        let currentObject = self.hingeImages[indexPath.row]
         
         //Set image of cell
-        cell.imageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!,
+        cell.imageView?.kf_setImageWithURL(NSURL(string: currentObject.imageURL)!,
                                            placeholderImage: nil,
                                            optionsInfo: [.TargetCache(myCache)])
         
-        downloader.downloadImageWithURL(NSURL(string: object.imageURL)!, progressBlock: { (receivedSize, totalSize) in }) { (image, error, imageURL, originalData) in
+        downloader.downloadImageWithURL(NSURL(string: currentObject.imageURL)!, progressBlock: { (receivedSize, totalSize) in }) { (image, error, imageURL, originalData) in
                 if image != nil {
                     self.imageArray.append(image!)
                 }
             }
-        
         return cell
     }
-    
     
     
     // MARK: - Navigation
@@ -98,23 +98,27 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
         if segue.identifier == "showGalleryView" {
             
             if let indexPath = self.collectionView?.indexPathForCell(sender as! UICollectionViewCell) {
-                
+
                     let galleryDetailVC = segue.destinationViewController as! GalleryViewController
                     galleryDetailVC.delegate = self
                 
-                    //passing data over
-                    galleryDetailVC.currentImageIndex = indexPath.row
+                    galleryDetailVC.selectedImageIndex = indexPath.row
                     galleryDetailVC.objectsArray = hingeImages
-                    galleryDetailVC.currentObject = hingeImages[indexPath.row]
+                    galleryDetailVC.selectedObject = hingeImages[indexPath.row]
                     galleryDetailVC.downloadedImages = imageArray
                 
-                    let object = self.hingeImages[indexPath.row]
+                    let currentObject = self.hingeImages[indexPath.row]
                 
-                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: object.imageURL)!)
-            
+                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: currentObject.imageURL)!)
             }
         }
     }
+    
+    
+    
+    // MARK: - User interface styles
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
-
-
+    
+}
