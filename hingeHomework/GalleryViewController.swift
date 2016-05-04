@@ -18,6 +18,7 @@
     //Includes a button that removes an image from the list.
 
 import UIKit
+import Foundation
 import Kingfisher
 
 protocol deleteImageProtocol {
@@ -27,11 +28,11 @@ protocol deleteImageProtocol {
 class GalleryViewController: UIViewController {
     
     var selectedObject = hingeImage(name: "", description: "", imageURL: "")
-    var animationStarted = Bool()
     var selectedImageIndex: Int = 0
     var downloadedImages = [UIImage]()
     var objectsArray = [hingeImage]()
     var delegate: deleteImageProtocol?
+    var animation: CAKeyframeAnimation?
     @IBOutlet weak var navbarTitle: UINavigationItem!
     @IBOutlet weak var galleryImageView: UIImageView!
     
@@ -40,35 +41,12 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         setupNavbar()
         setInitialImage()
-        animationStarted = true
     }
     
 
     func setInitialImage() {
         let URL = NSURL(string: (objectsArray[selectedImageIndex].imageURL))
         galleryImageView.kf_setImageWithURL(URL!)
-        addImagesToArray()
-    }
-    
-    
-    func addImagesToArray() {
-        var playImagesArray = [UIImage]()
-        
-        for (index, image) in downloadedImages.enumerate() {
-            playImagesArray.append(downloadedImages[index])
-            print(downloadedImages[index])
-        }
-        
-        animateImages()
-    }
-    
-    
-    //MARK: - Animation method
-    func animateImages() {
-        galleryImageView.stopAnimating()
-        galleryImageView.animationImages = downloadedImages
-        galleryImageView.animationDuration = 10.0
-        galleryImageView.startAnimating()
     }
     
     

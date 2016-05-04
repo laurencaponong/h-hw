@@ -83,6 +83,8 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
                                            placeholderImage: nil,
                                            optionsInfo: [.TargetCache(myCache)])
         
+        cell.tag = indexPath.row
+        
         downloader.downloadImageWithURL(NSURL(string: currentObject.imageURL)!, progressBlock: { (receivedSize, totalSize) in }) { (image, error, imageURL, originalData) in
                 if image != nil {
                     self.imageArray.append(image!)
@@ -108,8 +110,7 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
                     galleryDetailVC.downloadedImages = imageArray
                 
                     let currentObject = self.hingeImages[indexPath.row]
-                
-                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: currentObject.imageURL)!)
+//                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: currentObject.imageURL)!)
             }
         }
     }
