@@ -5,12 +5,12 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "0232C8E05592CEFBF811998BEE567BDEB13C0AE7" : 0,
-    "BC82D5DC20757B4799106BB6F335FEB91C2787E9" : 0
+    "B6527502F4B87753D78BEED822385848D844C49B" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A7CCC286-02D4-44C8-803B-7B695B5C9B15",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "0232C8E05592CEFBF811998BEE567BDEB13C0AE7" : "hingeHomework\/",
-    "BC82D5DC20757B4799106BB6F335FEB91C2787E9" : ""
+    "B6527502F4B87753D78BEED822385848D844C49B" : ""
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "hingeHomework",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -24,7 +24,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/laurencaponong\/meetup-swift.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BC82D5DC20757B4799106BB6F335FEB91C2787E9"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B6527502F4B87753D78BEED822385848D844C49B"
     }
   ]
 }

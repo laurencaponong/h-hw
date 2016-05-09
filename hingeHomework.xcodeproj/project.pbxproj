@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F50517687557AE13EC28B54 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F840233885032DDD24A79C /* Pods.framework */; };
-		85AB109FE7AE0965BAED6BB9 /* Pods_hingeHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B307F2F231102062F4BBDD /* Pods_hingeHomework.framework */; };
+		6B740538E8359608EF320EA1 /* Pods_hingeHomework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2827A3A44B5E04D0A116418F /* Pods_hingeHomework.framework */; };
+		89FFEEE31CE1359E00372737 /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FFEEE21CE1359E00372737 /* AFWrapper.swift */; };
 		DB3FB5DA1CCAA29100884319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB5D91CCAA29100884319 /* AppDelegate.swift */; };
 		DB3FB5DF1CCAA29100884319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB3FB5DD1CCAA29100884319 /* Main.storyboard */; };
 		DB3FB5E11CCAA29100884319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB3FB5E01CCAA29100884319 /* Assets.xcassets */; };
@@ -17,9 +17,7 @@
 		DB3FB5FA1CCAA29100884319 /* hingeHomeworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB5F91CCAA29100884319 /* hingeHomeworkUITests.swift */; };
 		DB3FB6081CCAA31300884319 /* HomepageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB6071CCAA31300884319 /* HomepageCollectionViewController.swift */; };
 		DB3FB60A1CCAA43600884319 /* HomepageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3FB6091CCAA43600884319 /* HomepageCollectionViewCell.swift */; };
-		DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */; };
 		DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */; };
-		DBF40F5B1CD141C300E6A6EE /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */; };
 		DBF40F611CD3D94600E6A6EE /* hingeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF40F601CD3D94600E6A6EE /* hingeImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,12 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1DD2E175E24FDA76E0C45C5C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		62464120369D37C92861E9D5 /* Pods-hingeHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hingeHomework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hingeHomework/Pods-hingeHomework.debug.xcconfig"; sourceTree = "<group>"; };
-		6B4FD15B43F73FA65C7F80AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A74869EB966ECFC0770FA34B /* Pods-hingeHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hingeHomework.release.xcconfig"; path = "Pods/Target Support Files/Pods-hingeHomework/Pods-hingeHomework.release.xcconfig"; sourceTree = "<group>"; };
+		2827A3A44B5E04D0A116418F /* Pods_hingeHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hingeHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89FFEEE21CE1359E00372737 /* AFWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
+		ABC7E20F5613E9422AFFABA4 /* Pods-hingeHomework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hingeHomework.release.xcconfig"; path = "Pods/Target Support Files/Pods-hingeHomework/Pods-hingeHomework.release.xcconfig"; sourceTree = "<group>"; };
+		AFF3069DE5E27F76761C0776 /* Pods-hingeHomework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hingeHomework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hingeHomework/Pods-hingeHomework.debug.xcconfig"; sourceTree = "<group>"; };
 		B3F840233885032DDD24A79C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8B307F2F231102062F4BBDD /* Pods_hingeHomework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hingeHomework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3FB5D61CCAA29000884319 /* hingeHomework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hingeHomework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3FB5D91CCAA29100884319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB3FB5DE1CCAA29100884319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,9 +58,7 @@
 		DB3FB5FB1CCAA29100884319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3FB6071CCAA31300884319 /* HomepageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageCollectionViewController.swift; sourceTree = "<group>"; };
 		DB3FB6091CCAA43600884319 /* HomepageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomepageCollectionViewCell.swift; sourceTree = "<group>"; };
-		DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
 		DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		DBF40F601CD3D94600E6A6EE /* hingeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hingeImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,8 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F50517687557AE13EC28B54 /* Pods.framework in Frameworks */,
-				85AB109FE7AE0965BAED6BB9 /* Pods_hingeHomework.framework in Frameworks */,
+				6B740538E8359608EF320EA1 /* Pods_hingeHomework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,24 +88,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A76FA0B94A1822D3DE6B740 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1DD2E175E24FDA76E0C45C5C /* Pods.debug.xcconfig */,
-				6B4FD15B43F73FA65C7F80AD /* Pods.release.xcconfig */,
-				62464120369D37C92861E9D5 /* Pods-hingeHomework.debug.xcconfig */,
-				A74869EB966ECFC0770FA34B /* Pods-hingeHomework.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		7BD23691B491E5C25B1A7F77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				B3F840233885032DDD24A79C /* Pods.framework */,
-				B8B307F2F231102062F4BBDD /* Pods_hingeHomework.framework */,
+				2827A3A44B5E04D0A116418F /* Pods_hingeHomework.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89FFEEE41CE135AE00372737 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				89FFEEE21CE1359E00372737 /* AFWrapper.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		C49ED40DEDD3B41D78D0E73C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFF3069DE5E27F76761C0776 /* Pods-hingeHomework.debug.xcconfig */,
+				ABC7E20F5613E9422AFFABA4 /* Pods-hingeHomework.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		DB3FB5CD1CCAA29000884319 = {
@@ -121,8 +121,8 @@
 				DB3FB5ED1CCAA29100884319 /* hingeHomeworkTests */,
 				DB3FB5F81CCAA29100884319 /* hingeHomeworkUITests */,
 				DB3FB5D71CCAA29000884319 /* Products */,
-				2A76FA0B94A1822D3DE6B740 /* Pods */,
 				7BD23691B491E5C25B1A7F77 /* Frameworks */,
+				C49ED40DEDD3B41D78D0E73C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,14 +139,14 @@
 		DB3FB5D81CCAA29000884319 /* hingeHomework */ = {
 			isa = PBXGroup;
 			children = (
+				89FFEEE41CE135AE00372737 /* Networking */,
+				DBC195C71CCEA171005C68F6 /* Model */,
+				DB3FB60B1CCAAE5600884319 /* Views */,
 				DB3FB5D91CCAA29100884319 /* AppDelegate.swift */,
 				DB3FB5DD1CCAA29100884319 /* Main.storyboard */,
 				DB3FB5E01CCAA29100884319 /* Assets.xcassets */,
 				DB3FB5E21CCAA29100884319 /* LaunchScreen.storyboard */,
 				DB3FB5E51CCAA29100884319 /* Info.plist */,
-				DBC195CA1CCEABDE005C68F6 /* AFWrapper.swift */,
-				DBC195C71CCEA171005C68F6 /* Model */,
-				DB3FB60B1CCAAE5600884319 /* Views */,
 			);
 			path = hingeHomework;
 			sourceTree = "<group>";
@@ -175,7 +175,6 @@
 				DB3FB6071CCAA31300884319 /* HomepageCollectionViewController.swift */,
 				DBC61D1F1CCE5B8700D0BAC2 /* GalleryViewController.swift */,
 				DB3FB6091CCAA43600884319 /* HomepageCollectionViewCell.swift */,
-				DBF40F5A1CD141C300E6A6EE /* CustomImageView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -195,12 +194,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB3FB5FE1CCAA29100884319 /* Build configuration list for PBXNativeTarget "hingeHomework" */;
 			buildPhases = (
-				4F5EE15A941342DDEB1FE320 /* Check Pods Manifest.lock */,
+				F8E3CCD74070276A1CA76BA2 /* Check Pods Manifest.lock */,
 				DB3FB5D21CCAA29000884319 /* Sources */,
 				DB3FB5D31CCAA29000884319 /* Frameworks */,
 				DB3FB5D41CCAA29000884319 /* Resources */,
-				264E7043EBA6A92E95607A42 /* Embed Pods Frameworks */,
-				218BC92784FF4CB1DA374B99 /* Copy Pods Resources */,
+				0F154B83AE5676FFC9CFD091 /* Embed Pods Frameworks */,
+				68D54EE373F987F8AE7742E9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -318,22 +317,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		218BC92784FF4CB1DA374B99 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hingeHomework/Pods-hingeHomework-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		264E7043EBA6A92E95607A42 /* Embed Pods Frameworks */ = {
+		0F154B83AE5676FFC9CFD091 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -348,7 +332,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hingeHomework/Pods-hingeHomework-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4F5EE15A941342DDEB1FE320 /* Check Pods Manifest.lock */ = {
+		68D54EE373F987F8AE7742E9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hingeHomework/Pods-hingeHomework-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8E3CCD74070276A1CA76BA2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,9 +372,8 @@
 				DB3FB60A1CCAA43600884319 /* HomepageCollectionViewCell.swift in Sources */,
 				DBF40F611CD3D94600E6A6EE /* hingeImage.swift in Sources */,
 				DBC61D201CCE5B8700D0BAC2 /* GalleryViewController.swift in Sources */,
-				DBC195CB1CCEABDE005C68F6 /* AFWrapper.swift in Sources */,
-				DBF40F5B1CD141C300E6A6EE /* CustomImageView.swift in Sources */,
 				DB3FB5DA1CCAA29100884319 /* AppDelegate.swift in Sources */,
+				89FFEEE31CE1359E00372737 /* AFWrapper.swift in Sources */,
 				DB3FB6081CCAA31300884319 /* HomepageCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,7 +514,7 @@
 		};
 		DB3FB5FF1CCAA29100884319 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62464120369D37C92861E9D5 /* Pods-hingeHomework.debug.xcconfig */;
+			baseConfigurationReference = AFF3069DE5E27F76761C0776 /* Pods-hingeHomework.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = hingeHomework/Info.plist;
@@ -528,7 +526,7 @@
 		};
 		DB3FB6001CCAA29100884319 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A74869EB966ECFC0770FA34B /* Pods-hingeHomework.release.xcconfig */;
+			baseConfigurationReference = ABC7E20F5613E9422AFFABA4 /* Pods-hingeHomework.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = hingeHomework/Info.plist;

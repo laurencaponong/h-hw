@@ -27,34 +27,37 @@
 
 
 import Kingfisher
-import Alamofire
-import SwiftyJSON
 
 private let reuseIdentifier = "Cell"
 
 class HomepageCollectionViewController: UICollectionViewController, deleteImageProtocol {
     
     var hingeImages = [hingeImage]()
-    var imageArray = [UIImage]()
     var myCache = ImageCache(name: "myCache")
     let downloader = KingfisherManager.sharedManager.downloader
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView!.backgroundColor = UIColor.blackColor()
         pullFromJSON()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.collectionView!.backgroundColor = UIColor.blackColor()
+        navigationItem.title = "Photo Gallery"
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Helvetica-Light", size: 15)!,  NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
     }
     
     
     // MARK: - Networking 
     func pullFromJSON() {
-        
         AFWrapper.getJSONData { (arr) in
             self.hingeImages = hingeImage.objectsFromJSON(arr)
             self.collectionView?.reloadData()
         }
     }
+    
     
     // MARK: - Delete image method
     func deleteImageAtIndex(imageIndex: Int) {
@@ -82,14 +85,6 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
         cell.imageView?.kf_setImageWithURL(NSURL(string: currentObject.imageURL)!,
                                            placeholderImage: nil,
                                            optionsInfo: [.TargetCache(myCache)])
-        
-        cell.tag = indexPath.row
-        
-        downloader.downloadImageWithURL(NSURL(string: currentObject.imageURL)!, progressBlock: { (receivedSize, totalSize) in }) { (image, error, imageURL, originalData) in
-                if image != nil {
-                    self.imageArray.append(image!)
-                }
-            }
         return cell
     }
     
@@ -103,23 +98,17 @@ class HomepageCollectionViewController: UICollectionViewController, deleteImageP
 
                     let galleryDetailVC = segue.destinationViewController as! GalleryViewController
                     galleryDetailVC.delegate = self
-                
-                    galleryDetailVC.selectedImageIndex = indexPath.row
-                    galleryDetailVC.objectsArray = hingeImages
-                    galleryDetailVC.selectedObject = hingeImages[indexPath.row]
-                    galleryDetailVC.downloadedImages = imageArray
-                
-                    let currentObject = self.hingeImages[indexPath.row]
-//                    galleryDetailVC.galleryImageView?.kf_setImageWithURL(NSURL(string: currentObject.imageURL)!)
+                    galleryDetailVC.index = indexPath.row
+                    galleryDetailVC.images = hingeImages
             }
         }
     }
     
     
-    
-    // MARK: - User interface styles
+    // MARK: - Interface styles
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
+
     
 }

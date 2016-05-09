@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lsO-IO-Zqt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9LB-3Q-7je">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="atx-2P-fdg">
+            <objects>
+                <navigationController id="9LB-3Q-7je" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cfL-yh-YHx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lsO-IO-Zqt" kind="relationship" relationship="rootViewController" id="Lek-30-Xst"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEa-1r-vmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-508" y="300"/>
+        </scene>
         <!--Homepage Collection View Controller-->
         <scene sceneID="qUq-Z3-DZP">
             <objects>
@@ -45,7 +61,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="xW8-tV-eVP" id="eoW-An-29i"/>
                                     <outlet property="placeholderImageView" destination="xW8-tV-eVP" id="pac-a3-7PP"/>
-                                    <segue destination="BOu-WN-EDU" kind="show" identifier="showGalleryView" action="showDetailViewController:sender:" id="Ysj-AZ-Va5"/>
+                                    <segue destination="BOu-WN-EDU" kind="show" identifier="showGalleryView" id="X8V-eV-s3U"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -54,80 +70,42 @@
                             <outlet property="delegate" destination="lsO-IO-Zqt" id="gGb-3c-NoU"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="YC7-9w-AtO"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u5t-Gw-DEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="346" y="394"/>
+            <point key="canvasLocation" x="166" y="300"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="cDg-CJ-CCO">
             <objects>
                 <viewController id="BOu-WN-EDU" customClass="GalleryViewController" customModule="hingeHomework" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3iW-MC-9MY"/>
-                        <viewControllerLayoutGuide type="bottom" id="OnM-YO-ss7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="SfN-WV-qT5">
+                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Lph-BE-jum">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLx-td-TAE">
-                                <rect key="frame" x="0.0" y="50" width="600" height="486"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pyY-KU-rJP">
-                                <rect key="frame" x="0.0" y="50" width="600" height="486"/>
-                            </imageView>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8h5-FH-s6h">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9vR-g4-hkO"/>
-                                </constraints>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem id="0VT-4B-TPk">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="00N-4L-UNt">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="backButtonTapped:" destination="BOu-WN-EDU" id="UYM-bf-ldC"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="wK4-wc-nAX">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="deleteButtonTapped:" destination="BOu-WN-EDU" id="hme-gV-tSE"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pyY-KU-rJP" secondAttribute="trailing" id="0tA-ui-1Vb"/>
-                            <constraint firstItem="pyY-KU-rJP" firstAttribute="top" secondItem="8h5-FH-s6h" secondAttribute="bottom" id="B5i-rG-NqB"/>
-                            <constraint firstAttribute="trailing" secondItem="8h5-FH-s6h" secondAttribute="trailing" id="KeU-EI-OJd"/>
-                            <constraint firstItem="pyY-KU-rJP" firstAttribute="leading" secondItem="SfN-WV-qT5" secondAttribute="leading" id="buu-7x-rlm"/>
-                            <constraint firstItem="OnM-YO-ss7" firstAttribute="top" secondItem="pyY-KU-rJP" secondAttribute="bottom" id="byo-1p-uNS"/>
-                            <constraint firstItem="OLx-td-TAE" firstAttribute="top" secondItem="8h5-FH-s6h" secondAttribute="bottom" id="d6p-3r-eGP"/>
-                            <constraint firstItem="OnM-YO-ss7" firstAttribute="top" secondItem="OLx-td-TAE" secondAttribute="bottom" id="dFR-mR-DBd"/>
-                            <constraint firstItem="8h5-FH-s6h" firstAttribute="leading" secondItem="SfN-WV-qT5" secondAttribute="leading" id="dfU-bV-Oux"/>
-                            <constraint firstItem="OLx-td-TAE" firstAttribute="leading" secondItem="SfN-WV-qT5" secondAttribute="leading" id="lnv-mq-QcC"/>
-                            <constraint firstItem="8h5-FH-s6h" firstAttribute="top" secondItem="SfN-WV-qT5" secondAttribute="top" id="rgU-9J-9yC"/>
-                            <constraint firstAttribute="trailing" secondItem="OLx-td-TAE" secondAttribute="trailing" id="tyR-tr-sAR"/>
-                        </constraints>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <navigationItem key="navigationItem" id="WHs-PF-aHr">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="vyv-5A-w6t">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="BOu-WN-EDU" id="yA8-8L-0Vp"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="dCY-nZ-L5x">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="deleteButtonTapped:" destination="BOu-WN-EDU" id="cPL-Fq-3wy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="galleryImageView" destination="pyY-KU-rJP" id="rRV-Mr-LzM"/>
-                        <outlet property="navbarTitle" destination="0VT-4B-TPk" id="6RT-RU-MP4"/>
+                        <outlet property="galleryImageView" destination="Lph-BE-jum" id="rQx-Np-DQc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSJ-LO-Gho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="394"/>
+            <point key="canvasLocation" x="1077" y="300"/>
         </scene>
     </scenes>
 </document>
